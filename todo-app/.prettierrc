@@ -1,0 +1,8 @@
+{
+  "singleQuote": true, // 큰따옴표 대신 작은 따옴표
+  "semi": true, // 세미콜론은 언제나 붙이도록
+  "useTabs": false, 
+  "tabWidth": 2, // 들여쓰기 할때 탭 대신 공백 두 칸
+  "trailingComma": "all",
+  "printWidth": 80,
+}
