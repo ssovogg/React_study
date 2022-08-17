@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px;
+  height: 5rem;
+  background: #333;
+  padding: 0 5em;
+  margin: 0 auto;
+}
+
+.header h1 {
+  color: orangered;
+  margin-right: 0.5em;
+}
+
+.header form {
+  flex-grow: 1;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.header form input {
+  width: 90%;
+  height: 2.5em;
+  border: none;
+  padding: 10px;
+}
+
+.header form button {
+  width: 10%;
+  height: 2.5em;
+  border: none;
+  color: white;
+  font-weight: 400;
+  background: orangered;
+  cursor: pointer;
+}
+
+.header form button:hover {
+  opacity: .8;
+}
