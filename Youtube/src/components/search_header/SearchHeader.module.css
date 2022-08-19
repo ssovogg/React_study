@@ -1,48 +1,40 @@
 .header {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 1000px;
-  height: 5rem;
-  background: #333;
-  padding: 0 5em;
-  margin: 0 auto;
-}
-
-.header h1 {
+  height: 4rem;
+  padding: 0.8em 1em;
+  background: black;
   color: orangered;
-  margin: 0 0.5em 0 0.3em;
 }
 
-.header form {
+.logo {
   display: flex;
-  flex-grow: 1;
-  border-radius: 30px;
-  overflow: hidden;
+  align-items: center;
+  margin-right: 1em;
 }
 
-.header form input {
-  width: 90%;
-  border: none;
-  padding: 10px;
-  height: 40px;
-  font-size: 1rem;
+.logo img {
+  margin-right: 0.8em;
 }
 
-.header button {
-  width: 10%;
-  height: 40px;
-  border: none;
-  color: white;
-  font-weight: 400;
-  background: orangered;
-  cursor: pointer;
+form {
+  display: flex;
+  flex-basis: 100%;
 }
 
-.header button img {
-  width: 20px;
+.input {
+  flex-basis: 100%;
+  border: 0;
+  font-size: 1.2rem;
+  padding: 0 1rem;
 }
 
-.header button:hover {
-  opacity: .8;
+.button {
+  background-color: darkgray;
+  border: 0;
+  padding: 0 0.8em;
+}
+
+.button img {
+  height: 100%;
+  padding: 0.5em 0.2em;
 }

@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  margin: 10em auto;
+}
+
+.container header {
+  color: white;
+  background: midnightblue;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+}
+
+.container footer {
+  color: white;
+  background: #333;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+}

@@ -1,35 +1,26 @@
-import React, { Component } from "react";
-import AddHabit from "./components/AddHabit";
-import Habits from "./components/Habits";
+import React from "react";
+import { useState } from "react";
+import './app.css'
+import CardMaker from "./components/CardMaker";
+import CardPreview from "./components/CardPreview";
 
-class App extends Component {
-  state = {
-    habits: [
-      { id: 1, name: "Reading", count: 0 },
-      { id: 2, name: "Drawing", count: 0 },
-      { id: 3, name: "Coding", count: 0 },
-    ],
-  };
-
-  addedHabit = (text) => {
-    const num = 4;
-    const habits = [...this.state.habits, { id: num, name: text, count: 0 }];
-    this.setState({ habits });
-  };
-
-  resetAll = () => {
-    this.setState({ habits: [] });
-  };
-
-  render() {
-    return (
-      <div>
-        <AddHabit habits={this.state.habits} onSubmit={this.addedHabit} />
-        <Habits habits={this.state.habits} />
-        <button onClick={this.resetAll}>Reset All</button>
-      </div>
-    );
+function App(props) {
+  const [userInfo, setUserInfo] = useState({});
+  const makeCard = (userInfo) => {
+    setUserInfo(userInfo);
   }
+
+  return (
+    <div className="wrap">
+      <header>
+        <h1>Business Card Maker</h1>
+      </header>
+      <div className="content_wrap">
+        <CardMaker onSubmit={makeCard}/>
+        <CardPreview userInfo={userInfo}/>
+      </div>
+    </div>
+  );
 }
 
 export default App;
