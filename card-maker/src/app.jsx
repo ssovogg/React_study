@@ -1,12 +1,12 @@
 // import logo from './logo.svg';
-import './app.css';
+import classes from './app.module.css';
 import Login from './components/Login/Login';
 
-function App() {
+function App({ authService }) {
   return (
-    <>
-      <Login />
-    </>
+    <div className={classes.app}>
+      <Login authService={authService}/>
+    </div>
   );
 }
 

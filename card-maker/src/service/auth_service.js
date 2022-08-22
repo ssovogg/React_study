@@ -35,7 +35,6 @@ class AuthService {
         throw new Error(`not supported provider : ${providerName}`);
     }
   }
-
 }
 
 export default AuthService;

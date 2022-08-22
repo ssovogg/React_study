@@ -1,24 +1,47 @@
+@value makerGreen, makerWhite, makerBlack, makerPink from '../../common/colors.css';
+
 .container {
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 300px;
-  margin: 10em auto;
+  text-align: center;
+  padding: 2em;
+  width: 100%;
+  background: makerWhite;
 }
 
-.container header {
-  color: white;
-  background: midnightblue;
-  width: 100%;
-  text-align: center;
-  padding: 20px;
+.section h1 {
+  color: makerGreen;
+  font-size: 2em;
+  margin-bottom: 1em;
 }
 
-.container footer {
-  color: white;
-  background: #333;
-  width: 100%;
-  text-align: center;
-  padding: 10px;
+.login li button {
+  font-size: 1em;
+  color: makerGreen;
+  font-weight: bold;
+  width: 20em;
+  padding: 0.8em 0;
+  border: 0;
+  background: makerPink;
+  border-radius: 10em;
+  margin-bottom: 1em;
+  cursor: pointer;
+}
+
+.login li button:hover {
+  color: makerWhite;
+  background: makerGreen;
+}
+
+.login li:last-child button {
+  margin-bottom: 0;
 }
