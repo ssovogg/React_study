@@ -1,0 +1,55 @@
+@value cWhite, cGreen, cGrey, cRed from '../../common/colors.css';
+
+.video {
+}
+.info {
+  padding: 0.5em 1.5em;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  color: cGreen;
+  margin-bottom: 0.8em;
+}
+
+.tags li {
+  font-size: 0.8em;
+  margin-right: 1em;
+}
+.info h2 {
+  color: cWhite;
+  font-size: 1.2em;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  border-bottom: 1px solid cGrey;
+}
+
+.channel {
+  position: relative;
+  color: cWhite;
+  padding-bottom: 1.5em;
+  margin-bottom: 1em;
+  border-bottom: 1px solid cGrey;
+}
+
+.channel p {
+  font-weight: bold;
+  margin-bottom: 0.8em;
+
+}
+.channel pre {
+  white-space: pre-wrap;
+  line-height: 1.4;
+}
+
+.channel button {
+  position: absolute;
+  top: 0.5em;
+  right: 0;
+  background: red;
+  padding: 0.5em 1.5em;
+  color: cWhite;
+  border: none;
+  border-radius: 0.3em;
+  cursor: pointer;
+}

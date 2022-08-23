@@ -1,0 +1,38 @@
+@value cWhite, cGreen, cRed, cWheat from '../../common/colors.css';
+
+.wrap {
+  width: 100%;
+  max-width: 30em;
+}
+
+.login {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em 0;
+  background: cWhite;
+}
+
+.login h1 {
+  color: cRed;
+  margin-bottom: 0.7em;
+}
+
+.login button {
+  width: 15em;
+  color: cGreen;
+  background: cWheat;
+  border: none;
+  border-radius: 5em;
+  font-size: 1.2em;
+  padding: 0.3em;
+  margin-bottom: 0.5em;
+  cursor: pointer;
+  transition: background 150ms ease-in;
+}
+
+.login button:hover {
+  background: cRed;
+  color: cWhite;
+}

@@ -1,0 +1,9 @@
+@value cWhite, cGreen from '../../common/colors.css';
+
+.footer {
+  width: 100%;
+  color: cWhite;
+  background: cGreen;
+  text-align: center;
+  padding: 0.5em;
+}

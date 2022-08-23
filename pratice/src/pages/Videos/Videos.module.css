@@ -1,0 +1,16 @@
+@value cGrey, cWhite, cGreen from '../../common/colors.css';
+@value mediaQuery from '../../common/size.css';
+
+.videos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1.5em;
+}
+
+@media screen and (max-width:mediaQuery) {
+  .videos {
+    flex-direction: column;
+  }
+}
