@@ -1,7 +1,10 @@
-import React from 'react';
+import React from "react";
 
 const Home = (props) => (
-      <h1>home</h1>
-  );
+  <>
+    <h1>home</h1>
+    <button>Log out</button>
+  </>
+);
 
 export default Home;
