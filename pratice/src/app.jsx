@@ -8,13 +8,13 @@ import classes from "./app.module.css";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 
-function App(props) {
+function App({ youtube }) {
   return (
     <div className={classes.wrap}>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<Home youtube={youtube} />} />
       </Routes>
     </BrowserRouter>
     </div>

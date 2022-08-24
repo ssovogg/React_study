@@ -1,0 +1,28 @@
+@value makerWhite, makerGreen from '../../../common/colors.css';
+
+.card {
+  width: 100%;
+  max-width: 35rem;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1.2em;
+}
+
+.card input {
+  flex: 1;
+  font-size: 1em;
+  padding: 0.1em;
+}
+
+.card select {
+  flex: 1;
+  border: 1px solid makerGreen;
+}
+
+
+.card textarea {
+  width: 100%;
+  font-size: 1em;
+  border: 1px solid makerGreen;
+  padding: 0.5em;
+}

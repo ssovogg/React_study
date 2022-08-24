@@ -4,41 +4,26 @@ import Header from "../../components/Header/Header";
 import Videos from "../Videos/Videos";
 import classes from "./Home.module.css";
 
-const Home = (props) => {
+const Home = ({ youtube }) => {
   const formRef = useRef();
   const searchRef = useRef();
   const [videos, setVideos] = useState([]);
-  const requestOptions = {
-    method: "GET",
-    redirect: "follow",
-  };
 
   const searchVideo = (e) => {
     e.preventDefault();
-    search(searchRef.current.value);
+    youtube //
+      .search(searchRef.current.value)
+      .then((result) => {
+        setVideos(result);
+      });
     formRef.current.reset();
   };
 
-  const search = (query) => {
-    fetch(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${query}&type=video&key=AIzaSyBRMVXtPaG4-SxkNUfyrjgE-2J5Dtyew-8`,
-      requestOptions
-    )
-      .then((response) => response.json())
-      .then((result) => setVideos(result.items));
-  };
-  const fetchPopular = () => {
-    fetch(
-      "https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=AIzaSyBRMVXtPaG4-SxkNUfyrjgE-2J5Dtyew-8",
-      requestOptions
-    )
-      .then((response) => response.json())
-      .then((result) => setVideos(result.items))
-      .catch((error) => console.log("error", error));
-  };
   useEffect(() => {
-    fetchPopular();
-  }, []);
+    youtube.mostPopular().then((result) => {
+      setVideos(result);
+    });
+  }, [youtube]);
 
   return (
     <div className={classes.wrap}>

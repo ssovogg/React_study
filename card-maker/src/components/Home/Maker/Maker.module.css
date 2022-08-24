@@ -1,0 +1,28 @@
+@value makerWhite, makerGreen from '../../../common/colors.css';
+@value mediaQuery from '../../../common/size.css';
+
+.maker {
+  width: 50%;
+  flex: 1;
+  text-align: center;
+  padding: 1em;
+  background: #eee;
+}
+
+.title {
+  font-size: 1.7em;
+  color: makerGreen;
+  margin: 0.5em 0 0.8em;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (max-width:mediaQuery) {
+  .maker {
+    width: 100%;
+  }
+}

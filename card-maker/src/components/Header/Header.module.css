@@ -4,7 +4,7 @@
   position: relative;
   width: 100%;
   text-align: center;
-  padding: 1em;
+  padding: 1.5em 1em 1em;
   background: makerGreen;
 }
 
@@ -27,7 +27,7 @@
 
 .logo {
   margin-right: 1em;
-  width: 3em;
+  width: 4em;
 }
 
 .title {
