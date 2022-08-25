@@ -1,23 +1,28 @@
+import { getAuth } from "firebase/auth";
 import React from "react";
-import {
-	BrowserRouter,
-	Routes,
-	Route,
-} from "react-router-dom";
+import { useEffect } from "react";
+import { useState } from "react";
 import classes from "./app.module.css";
-import Home from "./pages/Home/Home";
-import Login from "./pages/Login/Login";
+import AppRouter from "./components/Router";
 
-function App({ youtube }) {
+function App({ auth }) {
+  const setAuth = getAuth();
+  const [init, setInit] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(()=>{
+    setAuth.onAuthStateChanged(user => {
+      if(user){
+        setIsLoggedIn(true);
+      }else {
+        setIsLoggedIn(false);
+      }
+      setInit(true);
+    })
+  },[])
   return (
-    <div className={classes.wrap}>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/home" element={<Home youtube={youtube} />} />
-      </Routes>
-    </BrowserRouter>
-    </div>
+    <>
+      {init ? <AppRouter auth={auth} isLoggedIn={isLoggedIn}/> : "Loading.."}
+    </>
   );
 }
 
