@@ -6,12 +6,12 @@ import Profile from "../pages/Profile";
 import EditProfile from "../pages/EditProfile";
 import Navigation from "./Navigation";
 
-const AppRouter = ({ auth, isLoggedIn }) => (
+const AppRouter = ({ auth, db, userObj, isLoggedIn }) => (
   <BrowserRouter>
     {isLoggedIn && <Navigation auth={auth} />}
     <Routes>
       {isLoggedIn ? (
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home db={db} userObj={userObj} />} />
       ) : (
         <Route path="/" element={<Auth auth={auth}/>} />
       )}
