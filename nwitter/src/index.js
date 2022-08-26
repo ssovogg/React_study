@@ -8,8 +8,8 @@ import { dbService } from './fbase';
 const db = dbService
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <App db={db}/>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 

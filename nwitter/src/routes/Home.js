@@ -1,7 +1,8 @@
 import { addDoc, collection, getDocs, onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
+import Tweets from "../components/Tweets";
 
-const Home = ({ db }) => {
+const Home = ({ db, userInfo }) => {
   const [tweet, setTweet] = useState("");
   const [tweets, setTweets] = useState([]);
   const onChange = (event) => setTweet(event.target.value);
@@ -10,10 +11,10 @@ const Home = ({ db }) => {
     await addDoc(collection(db, "tweets"), {
       text: tweet,
       createAt: Date.now(),
+      creatorId: userInfo.uid
     })
     setTweet("");
   }
-
   useEffect(() => {
     onSnapshot(collection(db, "tweets"), (snapshot) => {
       const tweetArray = snapshot.docs.map(doc => (
@@ -32,9 +33,7 @@ const Home = ({ db }) => {
     </form>
     <div>
       {tweets.map(tweet => (
-        <div key={tweet.id}>
-          <h4>{tweet.text}</h4>
-        </div>
+        <Tweets key={tweet.id}db={db} tweet={tweet} isOwner={userInfo.uid === tweet.creatorId}/>
       ))}
     </div>
   </>
