@@ -3,7 +3,8 @@ import AppRouter from "./Router";
 import { authService } from "../fbase";
 import { useEffect } from "react";
 
-function App() {
+
+function App({ db }) {
   const [init, setInit] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -20,7 +21,7 @@ function App() {
 
   return (
     <>
-      {init ? <AppRouter isLoggedIn={isLoggedIn}/> : "Initialiazing..."}
+      {init ? <AppRouter isLoggedIn={isLoggedIn} db={db}/> : "Initialiazing..."}
       <footer>&copy; {new Date().getFullYear()}</footer>
     </>
   );
