@@ -1,64 +1,54 @@
+import { signOut } from "firebase/auth";
+import { addDoc, collection, doc, onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { collection, addDoc, onSnapshot } from "firebase/firestore";
-import Nweets from "../components/Nweets";
+import Twits from "../components/Twits";
 
-const Home = ({ db, userObj }) => {
-  const [nweet, setNweet] = useState(""); // add
-  const [nweets, setNweets] = useState([]); // read
-
-  // addDoc : db에 document 추가
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    await addDoc(collection(db, "nweets"), {
-      text: nweet,
-      createAt: Date.now(),
-      creatorId: userObj.uid,
-    });
-    setNweet("");
-  };
-
-  const onChange = (event) => {
-    setNweet(event.target.value);
-  };
-
-  // getDocs : db에 추가된 document 읽어서 화면에 보여주기
-  // 실시간으로 보여주려면 onSanpshot() 활용
-
-  useEffect(() => {
-    onSnapshot(collection(db, "nweets"), (snapshot) => {
-      const nweetArray = snapshot.docs.map(doc => (
-        {id:doc.id, ...doc.data()}
-      ))
-      setNweets(nweetArray);
+const Home = ({ auth, db, user }) => {
+  const [texts, setTexts] = useState('')
+  const [twits, setTwits] = useState([]);
+  const onLogout = () => {
+    signOut(auth);
+  }
+  const onSubmit = (e) => {
+    e.preventDefault();
+    addDoc(collection(db, "twits"), {
+      text: texts,
+      createdAt: Date.now(),
+      creatorId: user.uid,
     })
-    }, []);
+    setTexts('');
+  }
+  const onChange = e => {
+    setTexts(e.target.value);
+  }
 
-    return (
+  useEffect(()=>{
+    // 실시간 트윗 문서에 id 부여 후 불러오기 (id가 있어야 삭제 가능)
+    onSnapshot(collection(db, "twits"), snapshot => {
+      const realTimeTwits = snapshot.docs.map(doc => (
+        {id:doc.id, ...doc.data(),}
+      ))
+      setTwits(realTimeTwits);
+    })
+  },[])
+
+  return(
+  <>
+    <h1>Home</h1>
+    <button onClick={onLogout}>Logout</button>
+    <form onSubmit={onSubmit}>
+      <input type="text" required value={texts} onChange={onChange}/>
+      {/* <input type="file" /> */}
+      <button type="submit">twit</button>
+    </form>
     <div>
-      <h1>Home</h1>
-      <form onSubmit={onSubmit}>
-        <input
-          onChange={onChange}
-          value={nweet}
-          type="text"
-          placeholder="write a message"
-          maxLength={120}
-        />
-        <input type="submit" value="tweet" />
-      </form>
-      <div>
-        {nweets.map(nweet => (
-          <Nweets 
-            db={db} 
-            key={nweet.id} 
-            nweet={nweet} 
-            userObj={userObj}
-            isOwner={nweet.creatorId === userObj.uid}
-          />
-        ))}
-      </div>
+      {twits.map(item => (
+        <ul>
+          <Twits key={item.id} db={db} twit={item} isOwner={user.uid === item.creatorId}/>
+        </ul>
+      ))}
     </div>
-  );
-};
+  </>
+)}
 
 export default Home;
