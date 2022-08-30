@@ -1,0 +1,124 @@
+@value cWhite, cBlue, cPink, cGrey, clGrey from '../UI/colors.css';
+
+.login {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  color: cBlue;
+  font-size: 4em;
+  margin-bottom: 0.5em;
+}
+
+.login_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25em;
+  padding: 3em;
+  background: cWhite;
+  border: 1px solid cGrey;
+}
+.login_form form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.login_form form input {
+  font-size: 1.2em;
+  padding: 0.7em 0.5em;
+  border: none;
+  border-bottom: 1px solid cGrey;
+  transition: all 150ms ease-in;
+}
+.login_form form input::placeholder {
+  color: cGrey;
+}
+
+.login_form form input:focus {
+  outline: none;
+  border-bottom: 2px solid cBlue;
+}
+.login_form form button {
+  border: none;
+  font-size: 1em;
+  padding: 0.5em 0;
+  background: cBlue;
+  color: cWhite;
+  margin: 1.5em 0 2em;
+  border-radius: 0.3em;
+  cursor: pointer;
+}
+
+.social_login {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.social_login p {
+  color: cGrey;
+  position: relative;
+  font-size: 0.8em;
+  padding-bottom: 1.5em;
+}
+.social_login p::before {
+  content: '';
+  width: 10em;
+  height: 1px;
+  position: absolute;
+  top: 7px;
+  left: 0;
+  background: cGrey;
+  opacity: .5;
+}
+.social_login p::after {
+  content: '';
+  width: 10em;
+  height: 1px;
+  position: absolute;
+  top: 7px;
+  right: 0;
+  background: cGrey;
+  opacity: .5;
+}
+.social_login button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background: cWhite;
+  border: 1px solid cGrey;
+  border-radius: 2em;
+  padding: 0.5em 0;
+  font-size: 0.9em;
+  margin-bottom: 0.5em;
+  cursor: pointer;
+  transition: all 100ms ease-in;
+}
+
+.social_login button span {
+  margin-left: 0.5em;
+}
+
+.social_login button:hover {
+  color: cBlue;
+  border: 2px solid cBlue;
+}
+
+.toggle_account {
+  font-size: 0.9em;
+}
+.toggle_account button {
+  all: unset;
+  color: cPink;
+  cursor: pointer;
+  margin-left: 0.5em;
+}
+
+.toggle_account button:hover {
+  text-decoration: underline;
+}
