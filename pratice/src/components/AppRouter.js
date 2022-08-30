@@ -5,14 +5,14 @@ import Home from "./page/Home";
 import Login from "./page/Login";
 import Quote from "./page/Quote";
 
-const AppRouter = ({ isLoggedIn }) => (
+const AppRouter = ({ isLoggedIn, auth }) => (
   <BrowserRouter>
   {isLoggedIn && <Navigation />}
     <Routes>
       {isLoggedIn ? (
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home auth={auth} />} />
       ) : (
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Login auth={auth} />} />
       )}
       <Route path="/quote" element={<Quote />} />
     </Routes>
