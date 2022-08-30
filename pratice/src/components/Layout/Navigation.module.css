@@ -4,7 +4,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 2.5em;
+  width: 3em;
   height: 100vh;
   background: cGrey;
 }
@@ -20,7 +20,14 @@
 
 .nav li {
   color: cWhite;
-  margin: 0.3em 0;
+  font-size: 1.2em;
+  margin: 0.5em 0;
+  opacity: .5;
+}
+
+.nav li:hover,
+.nav li:active {
+  opacity: 1;
 }
 
 .logout {
@@ -33,5 +40,5 @@
 } 
 
 .logout button:hover {
-  color: cBlue;
+  color: cPink;
 }

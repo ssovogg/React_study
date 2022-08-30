@@ -17,7 +17,7 @@ const Navigation = ({auth}) => {
       </li>
       <li>
         <Link to="todo">
-          <i className="fa-solid fa-circle-check"></i>
+          <i className="fa-solid fa-book"></i>
         </Link>
       </li>
       <li>

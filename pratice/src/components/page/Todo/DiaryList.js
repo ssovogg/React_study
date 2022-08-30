@@ -1,10 +1,13 @@
 import React from "react";
 import classes from "./DiaryList.module.css";
 
-const DiaryList = ({ diary }) => {
+const DiaryList = ({ diary, onShow }) => {
   const { title, content, date } = diary;
+  const onClick = () => {
+    onShow(diary);
+  }
   return (
-    <li className={classes.diary}>
+    <li className={classes.diary} onClick={onClick}>
       <div className={classes.img} />
       <div className={classes.info}>
         <span>{date}</span>
