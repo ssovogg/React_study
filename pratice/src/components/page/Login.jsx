@@ -30,6 +30,9 @@ const Login = ({ auth }) => {
       setPassword(value)
     }
   };
+  const onClick = (e) => {
+    auth.socialLogin(e.target.name);
+  }
   return (
     <div className={classes.login}>
       <h1 className={classes.title}>sovog</h1>
@@ -55,11 +58,11 @@ const Login = ({ auth }) => {
         </form>
         <div className={classes.social_login}>
           <p>또는</p>
-          <button>
+          <button onClick={onClick} name="google">
             <i className="fa-brands fa-google"></i>
             <span>Google</span>
           </button>
-          <button>
+          <button onClick={onClick} name="github">
             <i className="fa-brands fa-github-alt"></i>
             <span>Github</span>
           </button>
