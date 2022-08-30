@@ -1,0 +1,95 @@
+@value cWhite, cBlue, cdBlue, cGrey, clGrey, cdGrey from '../../UI/colors.css';
+@value fTitle, fGothic from '../../UI/fonts.css';
+
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2em;
+}
+.wrap h1 {
+  color: cBlue;
+  font-family: fTitle;
+  margin-bottom: 0.5em;
+}
+
+.diary {
+  width: 90%;
+  background: cWhite;
+  text-align: center;
+  padding: 2em;
+}
+
+.edit_btn {
+  color: cWhite;
+  background: cBlue;
+  border: none;
+  font-size: 1.2em;
+  font-family: fTitle;
+  padding: 1em;
+  border-radius: 0.5em;
+  cursor: pointer;
+  transition: background 100ms ease-in;
+}
+
+.edit_btn:hover {
+  background: cdBlue;
+}
+
+.diary_form {
+  display: flex;
+  flex-direction: column;
+}
+
+.diary_form label {
+  text-align: start;
+  font-size: 0.8em;
+  color: cBlue;
+  margin-bottom: 0.5em;
+}
+.diary_form input,
+.diary_form textarea {
+  padding: 0.5em;
+  font-size: 1em;
+  margin-bottom: 1em;
+  font-family: fGothic;
+  border-radius: 0.3em;
+  border: 1px solid cGrey;
+}
+
+.diary_form textarea {
+  height: 20em;
+}
+.diary_form input:focus, 
+.diary_form textarea:focus {
+  outline: none;
+  border: 2px solid cBlue;
+  border-radius: 0.3em;
+}
+
+.diary_form button,
+.cancle {
+  background: cBlue;
+  color: cWhite;
+  font-size: 1em;
+  font-family: fGothic;
+  border: none;
+  padding: 0.5em;
+  border-radius: 0.3em;
+  cursor: pointer;
+  transition: all 150ms ease-in;
+}
+.cancle {
+  width: 100%;
+  background: cGrey;
+  margin-top: 0.4em;
+}
+
+.diary_form button:hover {
+  background: cdBlue;
+}
+.cancle:hover {
+  background: cdGrey;
+  opacity: .5;
+}
