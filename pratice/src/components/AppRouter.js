@@ -1,16 +1,18 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "../pages/Home";
-import Login from "../pages/Login";
+import Home from "./page/Home";
+import Login from "./page/Login";
+import Quote from "./page/Quote";
 
-const AppRouter = ({ isLoggedIn, auth, db, user }) => (
+const AppRouter = ({ isLoggedIn }) => (
   <BrowserRouter>
     <Routes>
       {isLoggedIn ? (
-        <Route path="/" element={<Home auth={auth} db={db} user={user}/>} />
+        <Route path="/" element={<Home />} />
       ) : (
-        <Route path="/" element={<Login auth={auth} />} />
+        <Route path="/" element={<Login />} />
       )}
+      <Route path="/quote" element={<Quote />} />
     </Routes>
   </BrowserRouter>
 );

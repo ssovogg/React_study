@@ -14,7 +14,7 @@ const AppRouter = ({ isLoggedIn, db, userInfo }) => (
       ) : (
         <Route path="/" element={<Auth />} />
       )}
-      <Route path="/profile" element={<Profile />} />
+      <Route path="/profile" element={<Profile db={db} userInfo={userInfo}/>} />
     </Routes>
   </BrowserRouter>
 );
