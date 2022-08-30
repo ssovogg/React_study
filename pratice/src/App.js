@@ -1,27 +1,33 @@
-import { onAuthStateChanged } from 'firebase/auth';
-import React, { useEffect, useState } from 'react';
-import AppRouter from './components/AppRouter';
-import Navigation from './components/Layout/Navigation';
+import React, { useEffect, useState } from "react";
+import AppRouter from "./components/AppRouter";
 
-const App = ({ auth }) => {
+const App = ({ auth, db }) => {
   const [init, setInit] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
 
-  useEffect(()=>{
-    auth.confirmUser(user => {
-      if(user){
+  useEffect(() => {
+    auth.confirmUser((user) => {
+      if (user) {
         setIsLoggedIn(true);
         setInit(true);
+        setUser(user);
       } else {
         setIsLoggedIn(false);
+        setUser(null);
       }
-    })
-  },[]);
+    });
+  }, []);
 
   return (
     <>
-      {init ? <AppRouter isLoggedIn={isLoggedIn} auth={auth} /> : "loading..."}
+      {init ? (
+        <AppRouter isLoggedIn={isLoggedIn} auth={auth} db={db} user={user} />
+      ) : (
+        "loading..."
+      )}
     </>
-  )};
+  );
+};
 
 export default App;

@@ -1,37 +1,54 @@
 import React from "react";
 import { useState } from "react";
-import classes from './Todo.module.css';
+import DiaryForm from "./DiaryForm";
+import classes from "./Todo.module.css";
+import { addDoc, collection, getDocs, onSnapshot } from "firebase/firestore";
+import { useEffect } from "react";
+import DiaryList from "./DiaryList";
 
-const Todo = (props) => {
-  const today = new Date().getFullYear();
-  console.log(today);
+const Todo = ({ db, user }) => {
   const [editMode, setEditMode] = useState(false);
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const [diarys, setDiarys] = useState([]);
+  const onAdd = async (input) => {
+    await addDoc(collection(db, "diary"), {
+      id: input.id,
+      creatorId: user.uid,
+      title: input.title,
+      content: input.content,
+      date: input.date,
+    })
     const ok = window.confirm("게시하겠습니가?");
-    if(ok){
+    if (ok) {
       toggleEditMode();
     }
-  }
+  };
   const toggleEditMode = () => setEditMode((prev) => !prev);
+
+  useEffect(() => {
+    onSnapshot(collection(db, "diary"), (snapshot) => {
+      const diaryList = snapshot.docs.map(doc => (
+        {id: doc.id, ...doc.data()}
+      ))
+      setDiarys(diaryList);
+      console.log(diarys);
+    })
+  }, [])
+  
   return (
     <div className={classes.wrap}>
       <h1>Diary</h1>
       {editMode ? (
-        <div className={classes.diary}>
-          <form className={classes.diary_form} onSubmit={onSubmit}>
-            <input type="date" value={today}/>
-            <label htmlFor="title">제목</label>
-            <input type="text" placeholder="Title" required id="title"/>
-            <label htmlFor="diary">내용</label>
-            <textarea placeholder="Write your day!" id="diary" required/>
-            <button type="submit">submit</button>
-          </form>
-          <button onClick={toggleEditMode} className={classes.cancle}>cancle</button>
-        </div>
+        <DiaryForm onAdd={onAdd} onToggle={toggleEditMode} />
       ) : (
         <div className={classes.diary}>
-          <button onClick={toggleEditMode} className={classes.edit_btn}>Post a New Diary</button>
+          <button onClick={toggleEditMode} className={classes.edit_btn}>
+            Post a New Diary
+          </button>
+          <ul>
+            {diarys.map(diary => (
+              <DiaryList diary={diary} />
+            ))}
+          </ul>
         </div>
       )}
     </div>

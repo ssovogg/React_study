@@ -12,26 +12,26 @@ const Navigation = ({auth}) => {
     <ul className={classes.nav}>
       <li>
         <Link to="/">
-          <i class="fa-solid fa-house"></i>
+          <i className="fa-solid fa-house"></i>
         </Link>
       </li>
       <li>
         <Link to="todo">
-          <i class="fa-solid fa-circle-check"></i>
+          <i className="fa-solid fa-circle-check"></i>
         </Link>
       </li>
       <li>
         <Link to="/quote">
-          <i class="fa-solid fa-comment"></i>
+          <i className="fa-solid fa-comment"></i>
         </Link>
       </li>
       <li>
         <Link to="/profile">
-        <i class="fa-solid fa-user"></i>
+        <i className="fa-solid fa-user"></i>
         </Link>
       </li>
       <li className={classes.logout}>
-      <button onClick={onLogout}><i class="fa-solid fa-right-from-bracket"></i></button>
+      <button onClick={onLogout}><i className="fa-solid fa-right-from-bracket"></i></button>
       </li>
     </ul>
   </nav>

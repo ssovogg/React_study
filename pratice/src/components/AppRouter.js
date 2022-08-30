@@ -7,7 +7,7 @@ import Profile from "./page/Profile";
 import Quote from "./page/Quote";
 import Todo from "./page/Todo/Todo";
 
-const AppRouter = ({ isLoggedIn, auth }) => (
+const AppRouter = ({ isLoggedIn, auth, db, user }) => (
   <BrowserRouter>
   {isLoggedIn && <Navigation auth={auth} />}
     <Routes>
@@ -17,7 +17,7 @@ const AppRouter = ({ isLoggedIn, auth }) => (
         <Route path="/" element={<Login auth={auth} />} />
       )}
       <Route path="/quote" element={<Quote />} />
-      <Route path="/todo" element={<Todo />} />
+      <Route path="/todo" element={<Todo db={db} user={user} />} />
       <Route path="/profile" element={<Profile />} />
     </Routes>
   </BrowserRouter>

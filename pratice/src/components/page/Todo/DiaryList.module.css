@@ -1,0 +1,38 @@
+@value cWhite, cBlue, cdBlue, cGrey, cdGreen, clGrey, cdGrey from '../../UI/colors.css';
+@value fTitle, fGothic from '../../UI/fonts.css';
+
+.diary {
+  width: 100%;
+  margin: 1em auto;
+  border: 1px solid cGrey;
+  border-radius: 0.5em;
+  font-family: fGothic;
+  text-align: start;
+  overflow: hidden;
+  cursor: pointer;
+}
+.img {
+  width: 100%;
+  height: 4em;
+  background: cdGreen;
+  transition: height 200ms ease-in-out;
+}
+.info {
+  padding: 1em;
+}
+.info span {
+  font-size: 0.8em;
+  color: cGrey;
+}
+.info h2 {
+  margin-top: 0.3em;
+  margin-bottom: 0.2em;
+  color: cBlue;
+}
+.info p {
+  color: cdGrey;
+}
+
+.diary:hover .img {
+  height: 8em;
+}
