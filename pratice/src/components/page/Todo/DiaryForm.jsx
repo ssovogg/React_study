@@ -1,15 +1,17 @@
+import { doc, updateDoc } from "firebase/firestore";
 import React from "react";
 import { useState } from "react";
 import classes from "./DiaryForm.module.css";
 
-const DiaryForm = (props) => {
+const DiaryForm = ({ onAdd, onToggle, editDiary, onUpdate, onCancle }) => {
   const day = new Date();
   const today = `${day.getFullYear()}-${(day.getMonth() + 1)
     .toString()
     .padStart(2, "0")}-${day.getDate().toString().padStart(2, "0")}`;
-  const [date, setDate] = useState(today);
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+
+  const [date, setDate] = useState(editDiary? editDiary.date : today);
+  const [title, setTitle] = useState(editDiary? editDiary.title : "");
+  const [content, setContent] = useState(editDiary? editDiary.content : "");
   const onChange = e => {
     const {target : {id, value}} = e;
     if(id==="date"){
@@ -22,14 +24,24 @@ const DiaryForm = (props) => {
   }
   const onSubmit = e => {
     e.preventDefault();
-    const input = {
-      id: Date.now(),
-      date: date,
-      title: title,
-      content: content
+    console.log(e.target.name);
+    if (editDiary) {
+      onUpdate(date, title, content);
+    } else {
+      const input = {
+        id: Date.now(),
+        date: date,
+        title: title,
+        content: content
+      }
+      onAdd(input);
     }
-    props.onAdd(input);
   }
+  const onCancleClick = () => {
+    onToggle();
+    onCancle();
+  }
+
   return (
     <div className={classes.diary}>
       <form className={classes.diary_form} onSubmit={onSubmit}>
@@ -52,9 +64,9 @@ const DiaryForm = (props) => {
           required
         />
         <input type="file" />
-        <button type="submit" >submit</button>
+        <button type="submit">{editDiary ? "Update" : "Submit"}</button>
       </form>
-      <button onClick={props.onToggle} className={classes.cancle}>
+      <button onClick={onCancleClick} className={classes.cancle}>
         cancle
       </button>
     </div>

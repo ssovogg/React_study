@@ -5,8 +5,11 @@ const Back = (props) => (
   <div className={classes.back} onClick={props.onClick} />
 );
 
-const ShowDairy = ({ diary, onClose, onDelete, user }) => {
+const ShowDairy = ({ diary, onClose, onDelete, onEdit, user }) => {
   const { title, date, content } = diary;
+  const onEditClick = () => {
+    onEdit(diary);
+  }
   const onClick = () => onClose();
   return (
     <>
@@ -19,8 +22,8 @@ const ShowDairy = ({ diary, onClose, onDelete, user }) => {
           <p>{content}</p>
         </div>
         {user && (
-          <div className={classes.btn}>
-            <button className={classes.edit}>
+          <div className={`${classes.btn} ${classes.user_btn}`}>
+            <button className={classes.edit} onClick={onEditClick}>
               <i className="fa-solid fa-pen"></i>
               <span>edit</span>
             </button>

@@ -52,6 +52,10 @@
   opacity: .5;
   transition: all 150ms ease-in-out;
 }
+
+.user_btn {
+  margin-right: 1.8em;
+}
 .btn span {
   font-size: 0.8em;
 }
