@@ -15,6 +15,7 @@ const App = ({ auth, db }) => {
       } else {
         setIsLoggedIn(false);
         setUser(null);
+        setInit(true);
       }
     });
   }, []);

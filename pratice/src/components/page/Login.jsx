@@ -3,9 +3,10 @@ import { useState } from "react";
 import classes from "./Login.module.css";
 
 const Login = ({ auth }) => {
-  const [createAccount, setCreateAccount] = useState(true);
+  const [createAccount, setCreateAccount] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState('');
   const toogleAcount = () => setCreateAccount((prev) => !prev);
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -17,7 +18,8 @@ const Login = ({ auth }) => {
         await auth.logIn(email, password);
       }
     } catch (error) {
-      console.log(error);
+      setError(error.message);
+      console.log(error.message);
     }
   };
   const onChange = (e) => {
@@ -55,6 +57,7 @@ const Login = ({ auth }) => {
             value={password}
           />
           <button type="submit">{createAccount ? "회원가입" : "로그인"}</button>
+          <i>{error}</i>
         </form>
         <div className={classes.social_login}>
           <p>또는</p>

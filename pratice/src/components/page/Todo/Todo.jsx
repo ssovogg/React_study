@@ -2,7 +2,14 @@ import React from "react";
 import { useState } from "react";
 import DiaryForm from "./DiaryForm";
 import classes from "./Todo.module.css";
-import { addDoc, collection, getDocs, onSnapshot } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  onSnapshot,
+} from "firebase/firestore";
 import { useEffect } from "react";
 import DiaryList from "./DiaryList";
 import ShowDairy from "./ShowDairy";
@@ -27,26 +34,32 @@ const Todo = ({ db, user }) => {
   };
   const toggleEditMode = () => setEditMode((prev) => !prev);
   const showDiary = (diary) => {
-    console.log(diary);
     setPopup(true);
     setDiary(diary);
   };
   const onClose = () => setPopup(false);
-
+  const onDelete = () => {
+    const ok = window.confirm("삭제하시겠습니까?");
+    if (ok) {
+      deleteDoc(doc(db, "diary", diary.did));
+      setPopup(false);
+    }
+  };
   useEffect(() => {
     onSnapshot(collection(db, "diary"), (snapshot) => {
       const diaryList = snapshot.docs.map((doc) => ({
-        id: doc.id,
+        did: doc.id,
         ...doc.data(),
       }));
       setDiarys(diaryList);
-      console.log(diarys);
     });
   }, []);
 
   return (
     <div className={classes.wrap}>
-      {popup && <ShowDairy diary={diary} onClose={onClose} />}
+      {popup && (
+        <ShowDairy diary={diary} onClose={onClose} onDelete={onDelete} user={user.uid === diary.creatorId} />
+      )}
       <h1>Diary</h1>
       {editMode ? (
         <DiaryForm onAdd={onAdd} onToggle={toggleEditMode} />
@@ -57,7 +70,7 @@ const Todo = ({ db, user }) => {
           </button>
           <ul>
             {diarys.map((diary) => (
-              <DiaryList diary={diary} onShow={showDiary} />
+              <DiaryList key={diary.id} diary={diary} onShow={showDiary} />
             ))}
           </ul>
         </div>

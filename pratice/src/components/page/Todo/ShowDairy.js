@@ -5,7 +5,8 @@ const Back = (props) => (
   <div className={classes.back} onClick={props.onClick} />
 );
 
-const ShowDairy = ({ onClose, diary: { title, date, content } }) => {
+const ShowDairy = ({ diary, onClose, onDelete, user }) => {
+  const { title, date, content } = diary;
   const onClick = () => onClose();
   return (
     <>
@@ -17,17 +18,21 @@ const ShowDairy = ({ onClose, diary: { title, date, content } }) => {
           <h1>{title}</h1>
           <p>{content}</p>
         </div>
+        {user && (
+          <div className={classes.btn}>
+            <button className={classes.edit}>
+              <i className="fa-solid fa-pen"></i>
+              <span>edit</span>
+            </button>
+            <button className={classes.delete} onClick={onDelete}>
+              <i className="fa-solid fa-eraser"></i>
+              <span>delete</span>
+            </button>
+          </div>
+        )}
         <div className={classes.btn}>
-          <button className={classes.edit}>
-            <i className="fa-solid fa-pen"></i>
-            <span>edit</span>
-          </button>
-          <button className={classes.delete}>
-            <i className="fa-solid fa-eraser"></i>
-            <span>delete</span>
-          </button>
           <button className={classes.close} onClick={onClick}>
-            <i class="fa-solid fa-xmark"></i>
+            <i className="fa-solid fa-xmark"></i>
           </button>
         </div>
       </div>

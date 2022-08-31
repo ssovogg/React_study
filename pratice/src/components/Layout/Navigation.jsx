@@ -1,10 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import classes from "./Navigation.module.css";
 
 const Navigation = ({auth}) => {
+  const navigate = useNavigate();
   const onLogout = () => {
     auth.logOut();
+    navigate("/");
   };
 
   return (
