@@ -1,4 +1,4 @@
-@value cWhite, cBlue, cdBlue, cGrey, clGrey, cdGrey from '../../UI/colors.css';
+@value cWhite, cBlue, cdBlue, cPink, cGrey, clGrey, cdGrey from '../../UI/colors.css';
 @value fTitle, fGothic from '../../UI/fonts.css';
 
 .diary {
@@ -38,7 +38,41 @@
   border: 2px solid cBlue;
   border-radius: 0.3em;
 }
+.img_input {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.img_input .deleteImg {
+  all: unset;
+  color: cPink;
+  font-weight: bold;
+  font-size: 0.8em;
+  margin-bottom: 0.3em;
+  opacity: .5;
+}
+.img_input .deleteImg span {
+  margin-left: 0.3em;
+}
+.img_input input {
+  width: 100%;
+}
+.img_input .deleteImg:hover {
+  opacity: 1;
+  background: none;
+}
+.img_input .deleteImg:active {
+  color: cGrey;
+}
+.select_img {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 1em;
+}
 
+.select_img img {
+  width: 5em;
+}
 .diary_form button,
 .cancle {
   background: cBlue;

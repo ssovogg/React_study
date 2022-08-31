@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AppRouter from "./components/AppRouter";
 
-const App = ({ auth, db }) => {
+const App = ({ auth, db, storage }) => {
   const [init, setInit] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
@@ -23,7 +23,13 @@ const App = ({ auth, db }) => {
   return (
     <>
       {init ? (
-        <AppRouter isLoggedIn={isLoggedIn} auth={auth} db={db} user={user} />
+        <AppRouter
+          isLoggedIn={isLoggedIn}
+          auth={auth}
+          db={db}
+          user={user}
+          storage={storage}
+        />
       ) : (
         "loading..."
       )}

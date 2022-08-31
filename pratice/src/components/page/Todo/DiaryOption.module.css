@@ -1,0 +1,17 @@
+@value cWhite, cBlue, cdBlue, cGrey, clGrey, cdGrey from '../../UI/colors.css';
+@value fTitle, fGothic from '../../UI/fonts.css';
+
+.date_option {
+  color: cBlue;
+  font-family: fGothic;
+}
+.date_option i {
+}
+.date_option input {
+  all: unset;
+  margin-left: 0.3em;
+}
+
+.date_option:hover {
+  color: cdBlue;
+}

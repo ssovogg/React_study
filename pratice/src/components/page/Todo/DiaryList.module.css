@@ -2,7 +2,7 @@
 @value fTitle, fGothic from '../../UI/fonts.css';
 
 .diary {
-  width: 100%;
+  width: 23em;
   margin: 1em auto;
   border: 1px solid cGrey;
   border-radius: 0.5em;
@@ -14,11 +14,17 @@
 .img {
   width: 100%;
   height: 4em;
-  background: cdGreen;
   transition: height 200ms ease-in-out;
 }
+.img img {
+  width: 100%;
+  vertical-align: middle;
+}
 .info {
+  position: relative;
   padding: 1em;
+  background: cWhite;
+  z-index: 0;
 }
 .info span {
   font-size: 0.8em;

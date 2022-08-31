@@ -1,6 +1,6 @@
 @value cWhite, cBlue, cdBlue, cGrey, clGrey, cdGrey from '../../UI/colors.css';
 @value fTitle, fGothic from '../../UI/fonts.css';
-
+@value sMiddle from '../../UI/size.css';
 
 .wrap {
   display: flex;
@@ -20,20 +20,32 @@
   text-align: center;
   padding: 2em;
 }
+.diary_option {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0 0.5em;
+}
+.dairy_list {
+  display: flex;
+  flex-direction: column;
+}
 
 .edit_btn {
   color: cWhite;
   background: cBlue;
   border: none;
-  font-size: 1.2em;
+  font-size: 1em;
   font-family: fTitle;
-  padding: 1em;
+  padding: 0.8em 1em;
   margin-bottom: 1em;
   border-radius: 0.5em;
   cursor: pointer;
   transition: background 100ms ease-in;
 }
-
+.edit_btn span {
+  margin-left: 0.4em;
+}
 .edit_btn:hover {
   background: cdBlue;
 }
@@ -93,4 +105,11 @@
 .cancle:hover {
   background: cdGrey;
   opacity: .5;
+}
+
+@media screen and (min-width: sMiddle) {
+  .dairy_list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }

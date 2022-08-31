@@ -6,7 +6,7 @@ const Back = (props) => (
 );
 
 const ShowDairy = ({ diary, onClose, onDelete, onEdit, user }) => {
-  const { title, date, content } = diary;
+  const { title, date, content, img } = diary;
   const onEditClick = () => {
     onEdit(diary);
   }
@@ -15,7 +15,9 @@ const ShowDairy = ({ diary, onClose, onDelete, onEdit, user }) => {
     <>
       <Back onClick={onClick} />
       <div className={classes.popup}>
-        <div className={classes.img}></div>
+        <div className={classes.img}>
+          <img src={img} alt="img" />
+        </div>
         <div className={classes.text}>
           <span>{date}</span>
           <h1>{title}</h1>

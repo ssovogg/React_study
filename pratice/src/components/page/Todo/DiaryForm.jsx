@@ -1,4 +1,3 @@
-import { doc, updateDoc } from "firebase/firestore";
 import React from "react";
 import { useState } from "react";
 import classes from "./DiaryForm.module.css";
@@ -9,38 +8,54 @@ const DiaryForm = ({ onAdd, onToggle, editDiary, onUpdate, onCancle }) => {
     .toString()
     .padStart(2, "0")}-${day.getDate().toString().padStart(2, "0")}`;
 
-  const [date, setDate] = useState(editDiary? editDiary.date : today);
-  const [title, setTitle] = useState(editDiary? editDiary.title : "");
-  const [content, setContent] = useState(editDiary? editDiary.content : "");
-  const onChange = e => {
-    const {target : {id, value}} = e;
-    if(id==="date"){
-      setDate(value)
-    } else if (id==="title"){
-      setTitle(value)
-    } else if (id==="content"){
-      setContent(value)
+  const [date, setDate] = useState(editDiary ? editDiary.date : today);
+  const [title, setTitle] = useState(editDiary ? editDiary.title : "");
+  const [content, setContent] = useState(editDiary ? editDiary.content : "");
+  const [img, setImg] = useState(null);
+  const onChange = (e) => {
+    const {
+      target: { id, value },
+    } = e;
+    if (id === "date") {
+      setDate(value);
+    } else if (id === "title") {
+      setTitle(value);
+    } else if (id === "content") {
+      setContent(value);
     }
-  }
-  const onSubmit = e => {
+  };
+  const onFileAdd = (e) => {
+    const imgFile = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(imgFile);
+    reader.onload = (event) => {
+      setImg(event.target.result);
+    };
+  };
+  const onFileClear = () => {
+    setImg(null)
+  };
+
+  const onSubmit = (e) => {
     e.preventDefault();
     console.log(e.target.name);
     if (editDiary) {
-      onUpdate(date, title, content);
+      onUpdate(date, title, content ,img);
     } else {
       const input = {
         id: Date.now(),
         date: date,
         title: title,
-        content: content
-      }
+        content: content,
+        img: img,
+      };
       onAdd(input);
     }
-  }
+  };
   const onCancleClick = () => {
     onToggle();
     onCancle();
-  }
+  };
 
   return (
     <div className={classes.diary}>
@@ -63,7 +78,21 @@ const DiaryForm = ({ onAdd, onToggle, editDiary, onUpdate, onCancle }) => {
           value={content}
           required
         />
-        <input type="file" />
+        <form className={classes.img_input}>
+          <label htmlFor="img">사진(옵션)</label>
+          <button
+            type="button"
+            onClick={onFileClear}
+            className={classes.deleteImg}
+          >
+            <i className="fa-solid fa-ban"></i>
+            <span>삭제</span>
+          </button>
+          <input type="file" onChange={onFileAdd} id="img" accept="image/*"  />
+        </form>
+        {img && <div className={classes.select_img}>
+          <img src={img} alt="사진"/>
+        </div>}
         <button type="submit">{editDiary ? "Update" : "Submit"}</button>
       </form>
       <button onClick={onCancleClick} className={classes.cancle}>
