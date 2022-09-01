@@ -11,7 +11,7 @@ const DiaryForm = ({ onAdd, onToggle, editDiary, onUpdate, onCancle }) => {
   const [date, setDate] = useState(editDiary ? editDiary.date : today);
   const [title, setTitle] = useState(editDiary ? editDiary.title : "");
   const [content, setContent] = useState(editDiary ? editDiary.content : "");
-  const [img, setImg] = useState(null);
+  const [img, setImg] = useState(editDiary ? editDiary.img : null);
   const onChange = (e) => {
     const {
       target: { id, value },
@@ -33,7 +33,9 @@ const DiaryForm = ({ onAdd, onToggle, editDiary, onUpdate, onCancle }) => {
     };
   };
   const onFileClear = () => {
+    console.log(img);
     setImg(null)
+    console.log(img);
   };
 
   const onSubmit = (e) => {

@@ -1,5 +1,6 @@
 @value cWhite, cBlue, cdBlue, cGrey, clGrey, cdGrey, cPink from '../../UI/colors.css';
 @value fTitle, fGothic from '../../UI/fonts.css';
+@value sMiddle from '../../UI/size.css';
 
 .back {
   position: fixed;
@@ -13,14 +14,14 @@
 }
 
 .popup {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
+  position: absolute;
+  top: 10%;
+  /* transform: translateY(-50%); */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 25em;
   padding: 3.5em 0 2em;
   background: white;
   border-radius: 0.5em;
@@ -36,18 +37,21 @@
   width: 100%;
 }
 .text {
+  width: 80%;
   text-align: center;
 }
 .text span {
   color: cGrey;
-  margin-bottom: 0.5em;
 }
 
 .text h1 {
-  margin-bottom: 0.3em;
+  margin-top: 0.3em;
+  margin-bottom: 0.5em;
 }
-.text p {
-  font-size: 1.2em;
+.text pre {
+  font-size: 1em;
+  line-height: 1.5;
+  font-family: fGothic;
 }
 
 .btn {
@@ -88,4 +92,9 @@
 .btn button:hover {
   opacity: 1;
   transform: scale(1.15);
+}
+
+@media screen and (min-width: sMiddle) {
+  .popup {
+  }
 }

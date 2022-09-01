@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./ShowDairy.module.css";
+import defaultImg from '../../../assets/picture.png';
 
 const Back = (props) => (
   <div className={classes.back} onClick={props.onClick} />
@@ -16,12 +17,12 @@ const ShowDairy = ({ diary, onClose, onDelete, onEdit, user }) => {
       <Back onClick={onClick} />
       <div className={classes.popup}>
         <div className={classes.img}>
-          <img src={img} alt="img" />
+          {img && <img src={img} alt="img" />}
         </div>
         <div className={classes.text}>
           <span>{date}</span>
           <h1>{title}</h1>
-          <p>{content}</p>
+          <pre>{content}</pre>
         </div>
         {user && (
           <div className={`${classes.btn} ${classes.user_btn}`}>

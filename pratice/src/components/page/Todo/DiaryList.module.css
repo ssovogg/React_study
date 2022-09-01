@@ -14,17 +14,20 @@
 .img {
   width: 100%;
   height: 4em;
+  background: cdBlue;
   transition: height 200ms ease-in-out;
 }
 .img img {
   width: 100%;
   vertical-align: middle;
+  background: cWhite;
 }
 .info {
   position: relative;
   padding: 1em;
   background: cWhite;
   z-index: 0;
+  height: 100%;
 }
 .info span {
   font-size: 0.8em;
@@ -35,8 +38,13 @@
   margin-bottom: 0.2em;
   color: cBlue;
 }
-.info p {
+.info pre {
   color: cdGrey;
+  font-family: fGothic;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 
 .diary:hover .img {
