@@ -1,0 +1,79 @@
+@value cWhite, cLightGrey, cLightPink, cGrey, cGreen, cShadow from '../../../common/colors.css';
+@value cBody from '../../../common/font.css';
+
+.form_list {
+  list-style: none;
+  padding: 2em 1em;
+  margin: 2em 1em;
+  box-shadow: 2px 2px 8px 0px cShadow;
+  border-radius: 0.5em;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 0.5em;
+}
+
+label {
+  color: cGreen;
+  font-weight: bold;
+  font-size: 0.8em;
+  font-family: cBody;
+}
+
+.input input,
+.input textarea {
+  background: cLightGrey;
+  border: none;
+  font-size: 1em;
+  padding: 0.6em;
+  border-radius: 0.3em;
+  font-family: cBody;
+}
+
+.input textarea {
+  font-size: 1em;
+}
+
+.input input:focus,
+.input textarea:focus {
+  outline: none;
+  background: cLightPink;
+}
+
+.btn {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding-top: 0.8em;
+  width: 100%;
+  margin: 0.5em;
+}
+
+.btn div {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  margin-right: 5%;
+}
+
+.btn select {
+  background: cWhite;
+  border: 1px solid cLightGrey;
+  font-size: 1em;
+  padding: 0.6em;
+  border-radius: 0.3em;
+  font-family: cBody;
+}
+
+.btn select:focus {
+  outline: none;
+}
+

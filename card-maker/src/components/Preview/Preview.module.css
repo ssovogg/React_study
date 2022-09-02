@@ -1,0 +1,24 @@
+@value cGreen, cWhite, cLightPink, cPink from '../../common/colors.css';
+@value mediaQuery from '../../common/size.css';
+@value cBody, cTitle from '../../common/font.css';
+
+
+.preview {
+  font-family: cTitle;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.preview h1 {
+  color: cGreen;
+  font-size: 2em;
+  margin-top: 1em;
+}
+
+@media screen and (max-width: mediaQuery) {
+  .preview {
+    width: 100%;
+  }
+}

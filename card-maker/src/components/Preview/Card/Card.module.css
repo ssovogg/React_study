@@ -1,0 +1,67 @@
+@value cWhite, cLightGrey, cLightPink, cGrey, cGreen, cBlack, cShadow, cWheat, cColorful from '../../../common/colors.css';
+@value cBody from '../../../common/font.css';
+
+.card {
+  font-family: cBody;
+  list-style: none;
+  padding: 2em 1.5em;
+  margin: 2em 1em;
+  box-shadow: 2px 2px 8px 0px cShadow;
+  border-radius: 0.5em;
+  display: flex;
+  width: 28em;
+}
+
+.light {
+  background: cWhite;
+  color: cBlack;
+}
+.dark {
+  background: cBlack;
+  color: cWhite;
+}
+.colorful {
+  background: cColorful;
+  color: cBlack;
+}
+
+.img {
+  width: 10em;
+  height: 10em;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-right: 3em;
+}
+
+.img img {
+  width: 10em;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+
+.info p {
+  font-size: 1.2em;
+}
+.title {
+  margin-bottom: 0.5em;
+}
+.title::after{
+  content: '';
+  display: block;
+  width: 80%;
+  height: 1px;
+  background: cWheat;
+}
+
+.email {
+  margin-bottom: 0.5em;
+}
+.info pre {
+  font-size: 1.2em;
+  font-family: cBody;
+}

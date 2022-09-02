@@ -4,7 +4,7 @@ import Navigation from "./Layout/Navigation";
 import Home from "./page/Home";
 import Login from "./page/Login";
 import Profile from "./page/Profile";
-import Quote from "./page/Quote";
+import Quote from "./page/Quote/Quote";
 import Todo from "./page/Todo/Todo";
 
 const AppRouter = ({ isLoggedIn, auth, db, user, storage }) => (

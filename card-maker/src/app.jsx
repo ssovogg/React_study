@@ -1,20 +1,12 @@
-// import logo from './logo.svg';
-import classes from "./app.module.css";
-import Login from "./components/Login/Login";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./components/Home/Home";
+import React from 'react';
+import classes from './app.module.css';
+import Home from './components/Page/Home/Home';
+import Login from './components/Page/Login/Login';
 
-function App({ authService }) {
-  return (
-    <div className={classes.app}>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Login authService={authService} />} />
-          <Route path="/home" element={<Home />} />
-        </Routes>
-      </Router>
-    </div>
+const App = (props) => (
+    <>
+      <Home />
+    </>
   );
-}
 
 export default App;

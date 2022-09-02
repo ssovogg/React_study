@@ -1,0 +1,23 @@
+@value cGreen, cWhite, cLightPink, cPink from '../../common/colors.css';
+@value mediaQuery from '../../common/size.css';
+@value cTitle from '../../common/font.css';
+
+.maker {
+  font-family: cTitle;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.maker h1 {
+  color: cGreen;
+  font-size: 2em;
+  margin-top: 1em;
+}
+
+@media screen and (max-width: mediaQuery) {
+  .maker {
+    width: 100%;
+  }
+}
