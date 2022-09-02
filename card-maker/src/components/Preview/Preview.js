@@ -7,8 +7,8 @@ const Preview = ({ infos }) => (
     <h1>Preview</h1>
     <section className={classes.cards}>
         <ul>
-          {infos.map(info => (
-            <Card key={info.id} info={info} />
+          {Object.keys(infos).map(key => (
+            <Card key={key} info={infos[key]} />
           ))}
         </ul>
       </section>

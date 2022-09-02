@@ -7,8 +7,8 @@ import Maker from "../../Maker/Maker";
 import { useState } from "react";
 
 const Home = (props) => {
-  const [infos, setInfos] = useState([
-    {
+  const [infos, setInfos] = useState({
+    'd1': {
       id: "d1",
       name: "Soo",
       title: "aa",
@@ -19,7 +19,7 @@ const Home = (props) => {
       fileName: "img",
       fielURL: null,
     },
-    {
+    'd2': {
       id: "d2",
       name: "Soo1",
       title: "aa",
@@ -30,7 +30,7 @@ const Home = (props) => {
       fileName: "img",
       fielURL: "img.png",
     },
-    {
+    'd3': {
       id: "d3",
       name: "Soo2",
       title: "aa",
@@ -39,19 +39,36 @@ const Home = (props) => {
       email: "soo@naver.com",
       message: "message",
       fileName: "img",
-      fielURL: "img.png",
+      fielURL: null,
     },
-  ])
+  });
 
-  const onAdd = (info) => {
-    const updatedCard = [info, ...infos];
-    setInfos(updatedCard);
-  }
+  const createOrUpdateCard = (info) => {
+    setInfos(infos => {
+      const updated = { ...infos };
+      updated[info.id] = info;
+      return updated;
+    });
+  };
+
+  const deleteCard = (info) => {
+    setInfos(infos => {
+      const updated = { ...infos };
+      delete updated[info.id];
+      return updated;
+    });
+  };
+
   return (
     <section className={classes.home}>
       <Header />
       <section className={classes.container}>
-        <Maker infos={infos} onAdd={onAdd} />
+        <Maker
+          infos={infos}
+          createOrUpdateCard={createOrUpdateCard}
+          updateCard={createOrUpdateCard}
+          deleteCard={deleteCard}
+        />
         <Preview infos={infos} />
       </section>
       <Footer />
