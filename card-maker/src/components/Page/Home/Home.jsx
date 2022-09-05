@@ -6,7 +6,7 @@ import Preview from "../../Preview/Preview";
 import Maker from "../../Maker/Maker";
 import { useState } from "react";
 
-const Home = (props) => {
+const Home = ({ FileInput }) => {
   const [infos, setInfos] = useState({
     'd1': {
       id: "d1",
@@ -64,6 +64,7 @@ const Home = (props) => {
       <Header />
       <section className={classes.container}>
         <Maker
+        FileInput={FileInput}
           infos={infos}
           createOrUpdateCard={createOrUpdateCard}
           updateCard={createOrUpdateCard}

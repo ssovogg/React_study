@@ -2,7 +2,8 @@ import React from "react";
 import Card from "./Card/Card";
 import classes from "./Preview.module.css";
 
-const Preview = ({ infos }) => (
+const Preview = ({ infos }) => {
+  return (
   <section className={classes.preview}>
     <h1>Preview</h1>
     <section className={classes.cards}>
@@ -13,6 +14,6 @@ const Preview = ({ infos }) => (
         </ul>
       </section>
   </section>
-);
+)};
 
 export default Preview;

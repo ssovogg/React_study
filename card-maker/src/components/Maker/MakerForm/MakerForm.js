@@ -1,8 +1,7 @@
 import React, { useRef } from "react";
 import Button from "../../Preview/Card/Button/Button";
-import FileInput from "../../Preview/Card/FileInput/FileInput";
 import classes from "./MakerForm.module.css";
-const MakerForm = ({ info, updateCard, deleteCard }) => {
+const MakerForm = ({ FileInput, info, updateCard, deleteCard }) => {
   const nameRef = useRef();
   const titleRef = useRef();
   const companyRef = useRef();
@@ -24,6 +23,13 @@ const MakerForm = ({ info, updateCard, deleteCard }) => {
       ...info,
       [e.currentTarget.name]: e.currentTarget.value,
     });
+  };
+  const onFileChange = (file) => {
+    updateCard({
+      ...info,
+      fileName: file.name,
+      fileURL: file.url
+    })
   };
 
   return (
@@ -93,7 +99,7 @@ const MakerForm = ({ info, updateCard, deleteCard }) => {
         <div className={classes.btn}>
           <div>
             <label>File</label>
-            <FileInput value={fileName ? fileName : "Add File"} />
+            <FileInput name={fileName} onFileChange={onFileChange}/>
           </div>
           <div>
             <label htmlFor="theme">Theme</label>

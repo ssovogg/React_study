@@ -1,8 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Button from "../../Preview/Card/Button/Button";
-import FileInput from "../../Preview/Card/FileInput/FileInput";
 import classes from "./MakerAddForm.module.css";
-const MakerAddForm = ({ onAdd }) => {
+const MakerAddForm = ({ onAdd, FileInput }) => {
   const formRef = useRef();
   const nameRef = useRef();
   const titleRef = useRef();
@@ -10,6 +9,19 @@ const MakerAddForm = ({ onAdd }) => {
   const emailRef = useRef();
   const messageRef = useRef();
   const themeRef = useRef();
+  const [file, setFile] = useState({
+    fileName: null,
+    fileURL: null,
+  });
+
+  const onFileChange = (file) => {
+    console.log(file);
+    setFile({
+      fileName: file.name,
+      fileURL: file.url,
+    });
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
     const info = {
@@ -20,11 +32,16 @@ const MakerAddForm = ({ onAdd }) => {
       email: emailRef.current.value || "",
       message: messageRef.current.value || "",
       theme: themeRef.current.value,
-      fileName: "",
-      fileURL: "",
+      fileName: file.fileName || "",
+      fileURL: file.fileURL || "",
     };
+    console.log(info);
     onAdd(info);
     formRef.current.reset();
+    setFile({
+      fileName: null,
+      fileURL: null,
+    });
   };
 
   return (
@@ -65,7 +82,7 @@ const MakerAddForm = ({ onAdd }) => {
         <div className={classes.btn}>
           <div>
             <label>File</label>
-            <FileInput value="Add File" />
+            <FileInput onFileChange={onFileChange} />
           </div>
           <div>
             <label htmlFor="theme">Theme</label>

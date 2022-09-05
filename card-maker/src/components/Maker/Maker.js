@@ -3,7 +3,7 @@ import classes from "./Maker.module.css";
 import MakerAddForm from "./MakerAddForm/MakerAddForm";
 import MakerForm from "./MakerForm/MakerForm";
 
-const Maker = ({ infos, createOrUpdateCard, updateCard, deleteCard }) => {
+const Maker = ({FileInput, infos, createOrUpdateCard, updateCard, deleteCard }) => {
   return (
     <section className={classes.maker}>
       <h1>Maker</h1>
@@ -12,12 +12,13 @@ const Maker = ({ infos, createOrUpdateCard, updateCard, deleteCard }) => {
           {Object.keys(infos).map((key) => (
             <MakerForm
               key={key}
+              FileInput={FileInput}
               info={infos[key]}
               updateCard={updateCard}
               deleteCard={deleteCard}
             />
           ))}
-          <MakerAddForm onAdd={createOrUpdateCard} />
+          <MakerAddForm FileInput={FileInput} onAdd={createOrUpdateCard} />
         </ul>
       </section>
     </section>
