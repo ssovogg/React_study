@@ -1,21 +1,60 @@
-@value cWhite, cLightGrey, cLightPink, cGrey, cGreen, cShadow from '../../common/colors.css';
+@value cWhite, cLightGrey, cPink, cLightPink, cGrey, cGreen, cShadow from '../../common/colors.css';
 @value cBody from '../../common/font.css';
 
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: cLightGrey; */
+  height: 2.6em;
+  border-radius: 0.3em;
+  overflow: hidden;
+}
 .input {
   display: none;
 }
 .button {
+  width: 100%;
   padding: 0.6em 0;
   background: cGrey;
   opacity: .8;
   color: cWhite;
   font-size: 1.2em;
   border: none;
-  border-radius: 0.3em;
   transition: opacity 100ms ease-in;
   font-family: cBody;
+}
+.pink {
+  color: cGrey;
+  background: cPink;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding-left: 10%;
+}
+
+.loading div {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  border: 3px solid cGrey;
+  border-top: 3px solid cPink;
+  animation: spinner 2s linear infinite;
 }
 
 .button:hover {
   opacity: .5;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
