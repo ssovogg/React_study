@@ -1,0 +1,70 @@
+@value cWhite, cBlue, cdBlue, cPink, cGrey, clGrey, cdGrey from '../../../UI/colors.css';
+@value fTitle, fGothic from '../../../UI/fonts.css';
+
+.editor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: cWhite;
+  margin: 1em 2em;
+  padding: 1.5em 0;
+  border-radius: 1em;
+  font-family: fTitle;
+}
+
+.editor label {
+  color: cBlue;
+  font-size: 0.9em;
+}
+
+.editor textarea,
+.editor input {
+  margin-top: 0.3em;
+  margin-bottom: 1.5em;
+  padding: 0.5em;
+  width: 80%;
+  border: 1px solid cGrey;
+  font-family: cGothic;
+  font-size: 1.1em;
+  border-radius: 0.3em;
+  text-align: center;
+}
+
+
+.editor textarea {
+  height: 7em;
+}
+
+.editor textarea:focus,
+.editor input:focus {
+  outline: 1px solid cBlue;
+}
+
+.file {
+  display: none;
+}
+
+.editor button {
+  font-family: cGothic;
+  border: none;
+  border-radius: 0.3em;
+  padding: 0.5em 1em;
+}
+
+.btn {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+.img {
+  width: 15em;
+}
+.make {
+  margin-right: 1em;
+  background: cBlue;
+  color: cWhite;
+}
+
+.make:hover {
+  background: cdBlue;
+}

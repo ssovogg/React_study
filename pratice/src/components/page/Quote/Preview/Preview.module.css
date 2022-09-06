@@ -1,0 +1,15 @@
+@value cWhite, cBlue, cdBlue, cPink, cGrey, clGrey, cdGrey from '../../../UI/colors.css';
+@value fTitle, fGothic from '../../../UI/fonts.css';
+
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preview {
+  width: 90%;
+  background: cWhite;
+  border-radius: 1em;
+  overflow: hidden;
+}

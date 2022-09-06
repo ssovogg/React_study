@@ -49,11 +49,12 @@ const Todo = ({ db, user, storage }) => {
     SetEditDiary(diary);
     setPopup(false);
   };
-  const onUpdate = (date, title, content) => {
+  const onUpdate = (date, title, content, img) => {
     updateDoc(doc(db, "diary", diary.did), {
       date: date,
       title: title,
       content: content,
+      img: img
     });
     const ok = window.confirm("수정하시겠습니까?");
     if (ok) {

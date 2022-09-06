@@ -1,0 +1,12 @@
+@value sMiddle from '../../UI/size.css';
+
+.quote {
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: sMiddle) {
+  .quote {
+    flex-direction: column;
+  }
+}
