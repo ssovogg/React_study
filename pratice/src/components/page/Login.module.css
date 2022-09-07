@@ -1,4 +1,4 @@
-@value cWhite, cBlue, cPink, cGrey, clGrey from '../UI/colors.css';
+@value cWhite, cBlue, cPink, clPink, cGrey, clGrey from '../UI/colors.css';
 @font-face {
   font-family: 'HallymGothic-Regular';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2204@1.0/HallymGothic-Regular.woff2') format('woff2');
@@ -21,6 +21,7 @@
   font-family: 'HallymGothic-Regular';
 }
 
+/* login form */
 .login_form {
   display: flex;
   flex-direction: column;
@@ -35,6 +36,8 @@
   flex-direction: column;
   width: 100%;
 }
+
+/* login input */
 .login_form form input {
   font-size: 1.2em;
   padding: 0.7em 0.5em;
@@ -50,6 +53,8 @@
   outline: none;
   border-bottom: 2px solid cBlue;
 }
+
+/* login button */
 .login_form form button {
   border: none;
   font-size: 1em;
@@ -60,7 +65,22 @@
   border-radius: 0.3em;
   cursor: pointer;
 }
+.login_form form button:disabled {
+  opacity: .5;
+}
 
+/* login + */
+.invalid {
+  background: clPink;
+}
+.error {
+  color: cPink;
+  text-align: center;
+  padding: 0.2em 0 0.6em;
+  font-size: 0.9em;
+}
+
+/* social login */
 .social_login {
   text-align: center;
   width: 100%;
