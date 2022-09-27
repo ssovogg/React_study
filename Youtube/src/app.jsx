@@ -1,51 +1,27 @@
-import React from "react";
-import classes from "./app.module.css";
-import { useEffect, useState } from "react";
-import SearchHeader from "./components/search_header/SeartchHeader";
-import VideoList from "./components/Vide_list/VideoList";
-import ShowVideo from "./components/show_video/ShowVideo";
-// import ShowVideo from './components/show_video/ShowVideo';
+import React, { useEffect, useState } from "react";
+import VideoList from "./components/VideoList/VideoList";
 
-function App({ youtube }) {
+function App(props) {
   const [videos, setVideos] = useState([]);
-  const [seletedVideo, setSeletedVideo] = useState(null);
 
-  const search = (query) => {
-    setSeletedVideo(null);
-    youtube
-      .search(query)
-      .then((result) => {
-        setVideos(result)
-      });
-  };
+  useEffect(() => { // mount가 되었거나 update가 될 때마다 호출
+    const requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
 
-  const showVideoHandle = (info) => {
-    setSeletedVideo(info);
-  };
+    fetch(
+      "https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=AIzaSyBRMVXtPaG4-SxkNUfyrjgE-2J5Dtyew-8",
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((result) => setVideos(result.items))
+      .catch((error) => console.log("error", error));
+  }, []);
 
-  useEffect(() => {
-    youtube.mostPopular().then((result) => setVideos(result));
-  }, [youtube]);
-
-  return (
-    <div className={classes.app}>
-      <SearchHeader onSearch={search} />
-      <section className={classes.section}>
-        {seletedVideo && (
-          <div className={classes.detail}>
-            <ShowVideo info={seletedVideo} />
-          </div>
-        )}
-        <div className={classes.list}>
-          <VideoList 
-            videos={videos} 
-            onClick={showVideoHandle}
-            display={seletedVideo ? 'list' : 'grid'}
-          />
-        </div>
-      </section>
-    </div>
-  );
+  return <div>
+    <VideoList videos={videos}/>
+  </div>;
 }
 
 export default App;

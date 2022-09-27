@@ -23,7 +23,7 @@ const Login = ({ auth }) => {
   const onEmailChange = (e) => {
     setEmail(e.target.value);
     setEmailIsTouched(true);
-    if (e.target.value.includes("@")) {
+    if (e.target.value.includes("@") && e.target.value.includes(".")) {
       setEmailIsValid(true);
     } else {
       setEmailIsValid(false);
